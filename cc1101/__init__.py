@@ -538,6 +538,25 @@ class CC1101:
                     " and that you selected the correct SPI bus and chip/slave select line."
                 )
             raise ValueError(msg)
+        
+    def enable_raw_mode(self) -> None:
+        """
+        Enable RAW mode (transparent, no packet handling).
+        """
+        self.set_sync_mode(SyncMode.NO_PREAMBLE_AND_SYNC_WORD)
+        self._disable_data_whitening()
+        self.disable_checksum()
+        
+    def set_idle(self) -> None:
+        """
+        Enter IDLE state from any state.
+        """
+        
+        self._command_strobe(StrobeAddress.SIDLE)
+        # Verify the state transition
+        marcstate = self.get_main_radio_control_state_machine_state()
+        if marcstate != cc1101.MainRadioControlStateMachineState.IDLE:
+            raise RuntimeError(f"Failed to enter IDLE state, current state: {marcstate.name}")
 
     def _configure_defaults(self) -> None:
         # next major/breaking release will probably stick closer to CC1101's defaults

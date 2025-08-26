@@ -1,4 +1,4 @@
-# python-cc1101
+# python-cc1101 + Raw
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![CI Pipeline Status](https://github.com/fphammerle/python-cc1101/workflows/tests/badge.svg)](https://github.com/fphammerle/python-cc1101/actions)
@@ -12,7 +12,7 @@ Python Library & Command Line Tool to Transmit RF Signals via [CC1101 Transceive
 ## Setup
 
 ```sh
-$ pip3 install --user --upgrade cc1101
+$ git clone https://github.com/rs9000/python-cc1101-raw.git
 ```
 
 On Raspbian / Raspberry Pi OS, dependencies can optionally be installed via:
