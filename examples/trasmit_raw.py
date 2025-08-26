@@ -13,25 +13,25 @@ SEQUENCE = [
     ("CCCCCCCCCC", 23140)
 ]
 
-# Symbol rate from original script
+# Symbol rate 
 SYMBOL_RATE = 3300  # baud (samples per second)
 SAMPLE_RATE = 1_000_000.0
 
 
 with cc1101.CC1101() as radio:
-    # Set frequency to 433.92 MHz (from original script)
+    # Set frequency to 433.92 MHz 
     radio.set_base_frequency_hertz(433.92e6)
 
-    # Set symbol rate to 3300 baud (from original script)
+    # Set symbol rate to 3300 baud 
     radio.set_symbol_rate_baud(SYMBOL_RATE)
 
-    # Set modulation format to ASK/OOK (from original script)
+    # Set modulation format to ASK/OOK 
     radio._set_modulation_format(ModulationFormat.ASK_OOK)
 
-    # Configure output power for OOK (0 for '0', non-zero for '1') (from original script)
+    # Configure output power for OOK (0 for '0', non-zero for '1') 
     radio.set_output_power((0, 0xC6))
 
-    # Set packet length mode to FIXED (from original script)
+    # Set packet length mode to FIXED 
     radio.set_packet_length_mode(PacketLengthMode.FIXED)
     radio.enable_raw_mode()
     
@@ -52,7 +52,7 @@ with cc1101.CC1101() as radio:
             radio.transmit(data_bytes)
             print(f"Transmission completed: {hex_string}")
             
-            # Convert pause from samples to seconds (samples / symbol_rate)
+            # Convert pause from samples to seconds 
             pause_seconds = pause_samples / SAMPLE_RATE
             time.sleep(pause_seconds)
         except:

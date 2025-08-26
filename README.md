@@ -51,7 +51,7 @@ Raspberry Pi GPIO docs: https://www.raspberrypi.org/documentation/usage/gpio/
 
 ### Library
 
-See [examples](https://github.com/fphammerle/python-cc1101/blob/master/examples/).
+See [examples](https://github.com/rs9000/python-cc1101-raw/tree/master/examples).
 
 ```python
 import cc1101
